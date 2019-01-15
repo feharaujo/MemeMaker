@@ -47,7 +47,6 @@ class MainFragment : BaseFragment<MainFragmentContract.View, MainFragmentContrac
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //viewModel = ViewModelProviders.of(this).get(MainActivityPresenter::class.java)
 
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
@@ -57,7 +56,7 @@ class MainFragment : BaseFragment<MainFragmentContract.View, MainFragmentContrac
         }
 
         albumButton.setOnClickListener {
-            openGallery("Select your picture")
+            openGallery(getString(R.string.msg_select_picture))
         }
 
         cameraButton.setOnClickListener {
@@ -65,52 +64,55 @@ class MainFragment : BaseFragment<MainFragmentContract.View, MainFragmentContrac
         }
 
         btRed.setOnClickListener {
-            context.let {
-                editorContainer.setBackgroundColor(ContextCompat.getColor(it!!, R.color.red))
+            context?.let { context ->
+                editorContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.red))
             }
         }
 
         btBlue.setOnClickListener {
-            context.let {
-                editorContainer.setBackgroundColor(ContextCompat.getColor(it!!, R.color.blue))
+            context?.let { context ->
+                editorContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.blue))
             }
         }
 
         btGreen.setOnClickListener {
-            context.let {
-                editorContainer.setBackgroundColor(ContextCompat.getColor(it!!, R.color.green))
+            context?.let { context ->
+                editorContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.green))
             }
         }
 
         btYellow.setOnClickListener {
-            context.let {
-                editorContainer.setBackgroundColor(ContextCompat.getColor(it!!, R.color.yellow))
+            context?.let { context ->
+                editorContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.yellow))
             }
         }
 
         btOrange.setOnClickListener {
-            context.let {
-                editorContainer.setBackgroundColor(ContextCompat.getColor(it!!, R.color.orange))
+            context?.let { context ->
+                editorContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.orange))
             }
         }
 
         btBlack.setOnClickListener {
-            context.let {
-                editorContainer.setBackgroundColor(ContextCompat.getColor(it!!, android.R.color.black))
+            context?.let { context ->
+                editorContainer.setBackgroundColor(ContextCompat.getColor(context, android.R.color.black))
             }
         }
 
         btWhite.setOnClickListener {
-            context.let {
-                editorContainer.setBackgroundColor(ContextCompat.getColor(it!!, android.R.color.white))
+            context?.let { context ->
+                editorContainer.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white))
             }
         }
     }
 
 
-    override fun loadImageOnEditor(url: String) {
-        val picasso = Picasso.Builder(ivMeme.context).build()
-        picasso.load(url).into(ivMeme)
+    override fun loadImageOnEditor(url: String?) {
+        url?.let { value ->
+            val picasso = Picasso.Builder(ivMeme.context).build()
+            picasso.load(value).into(ivMeme)
+        }
+
     }
 
     override fun loadImageOnEditor(image: Bitmap) {

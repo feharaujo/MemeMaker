@@ -7,7 +7,7 @@ import com.fearaujo.mememaker.arch.BaseContract
 class MainFragmentContract: BaseContract {
 
     interface View: BaseContract.View {
-        fun loadImageOnEditor(url: String)
+        fun loadImageOnEditor(url: String?)
         fun loadImageOnEditor(image: Bitmap)
         fun openGallery(title: String)
         fun openCamera()

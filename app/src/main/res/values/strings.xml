@@ -2,9 +2,6 @@
     <string name="app_name">Meme Maker</string>
     <string name="watermark">Meme Maker+</string>
 
-    <string name="admob_id"></string>
-    <string name="banner_ad_unit_id"></string>
-
     <string name="label_btn_camera">Camera</string>
     <string name="label_btn_memes">Memes</string>
     <string name="label_btn_album">Album</string>
@@ -12,4 +9,5 @@
     <string name="top_text">Top text</string>
     <string name="bottom_text">Bottom text</string>
     <string name="error_permission_required">Permission required.</string>
+    <string name="msg_select_picture">Select your picture</string>
 </resources>

@@ -13,11 +13,14 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.drawToBitmap
+import com.fearaujo.mememaker.BANNER_ID
 import com.fearaujo.mememaker.R
 import com.fearaujo.mememaker.arch.BaseFragment
 import com.fearaujo.mememaker.hideKeyboard
 import com.fearaujo.mememaker.web.WebSelectorActivity
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.markodevcic.peko.Peko
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.container_ads.*
@@ -45,11 +48,21 @@ class MainFragment : BaseFragment<MainFragmentContract.View, MainFragmentContrac
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
+    fun createAdView() {
+        val adViewConfig = AdView(context)
+        adViewConfig.adSize = AdSize.SMART_BANNER
+        adViewConfig.adUnitId = BANNER_ID
+
+        adView.addView(adViewConfig)
+        val adRequest = AdRequest.Builder().build()
+        adViewConfig.loadAd(adRequest)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+
+        createAdView()
 
         memesButton.setOnClickListener {
             startActivityForResult(Intent(activity, WebSelectorActivity::class.java), REQUEST_PHOTO_WEB)

@@ -48,14 +48,12 @@
         ads:layout_constraintStart_toEndOf="@+id/cameraButton"
         ads:layout_constraintTop_toTopOf="@+id/cameraButton" />
 
-    <com.google.android.gms.ads.AdView
+    <RelativeLayout
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"

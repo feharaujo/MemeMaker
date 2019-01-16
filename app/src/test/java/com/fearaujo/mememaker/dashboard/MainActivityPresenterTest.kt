@@ -11,7 +11,7 @@ import org.mockito.Mockito.verifyNoMoreInteractions
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class MainPresenterTest {
+class MainActivityPresenterTest {
 
     @Mock
     lateinit var view: MainActivityContract.View

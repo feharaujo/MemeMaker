@@ -11,6 +11,8 @@ class MainFragmentContract: BaseContract {
         fun loadImageOnEditor(image: Bitmap)
         fun openGallery(title: String)
         fun openCamera()
+
+        fun createAdView()
     }
 
     interface Presenter : BaseContract.Presenter<MainFragmentContract.View> {

@@ -35,6 +35,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 class MainFragment : BaseFragment<MainFragmentContract.View, MainFragmentContract.Presenter>(), MainFragmentContract.View {
+
     override fun initPresenter(): MainFragmentContract.Presenter {
         return MainFragmentPresenter(this)
     }
@@ -48,21 +49,9 @@ class MainFragment : BaseFragment<MainFragmentContract.View, MainFragmentContrac
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
-    fun createAdView() {
-        val adViewConfig = AdView(context)
-        adViewConfig.adSize = AdSize.SMART_BANNER
-        adViewConfig.adUnitId = BANNER_ID
-
-        adView.addView(adViewConfig)
-        val adRequest = AdRequest.Builder().build()
-        adViewConfig.loadAd(adRequest)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
-        createAdView()
 
         memesButton.setOnClickListener {
             startActivityForResult(Intent(activity, WebSelectorActivity::class.java), REQUEST_PHOTO_WEB)
@@ -117,6 +106,16 @@ class MainFragment : BaseFragment<MainFragmentContract.View, MainFragmentContrac
                 editorContainer.setBackgroundColor(ContextCompat.getColor(context, android.R.color.white))
             }
         }
+    }
+
+    override fun createAdView() {
+        val adViewConfig = AdView(context)
+        adViewConfig.adSize = AdSize.SMART_BANNER
+        adViewConfig.adUnitId = BANNER_ID
+
+        adView.addView(adViewConfig)
+        val adRequest = AdRequest.Builder().build()
+        adViewConfig.loadAd(adRequest)
     }
 
 
